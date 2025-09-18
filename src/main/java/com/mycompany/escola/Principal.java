@@ -18,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -140,7 +141,9 @@ public class Principal extends javax.swing.JFrame {
         Aluno a = new Aluno(jTNome.getText(),jTEmail.getText(), jTTelefone.getText(), jTNascimento.getText());
          
          
-         JOptionPane.showMessageDialog(rootPane, a.getNome());
+       Resultado r = new Resultado(a);
+       r.setVisible(true);
+       r.setLocationRelativeTo(this);
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
@@ -170,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form */ 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
