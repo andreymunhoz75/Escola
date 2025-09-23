@@ -5,6 +5,7 @@
 package com.mycompany.escola;
 
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -52,6 +54,12 @@ public class Login extends javax.swing.JFrame {
         jPSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPSenhaActionPerformed(evt);
+            }
+        });
+
+        jTLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTLoginActionPerformed(evt);
             }
         });
 
@@ -131,13 +139,27 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
-        System.out.println("Login: " + jTLogin.getText());
-        System.out.println("Senha: " + String.valueOf(jPSenha.getPassword()));
+
+        if ("admin".equals(jTLogin.getText())){
+            if ("123456".equals(String.valueOf(jPSenha.getPassword()))){
+                Principal p = new Principal();
+                p.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Senha Invalida");
+            }    
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario Invalido");
+        }
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jPSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPSenhaActionPerformed
+
+    private void jTLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTLoginActionPerformed
 
     /**
      * @param args the command line arguments
