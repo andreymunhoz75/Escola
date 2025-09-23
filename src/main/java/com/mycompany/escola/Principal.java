@@ -37,9 +37,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTNome = new javax.swing.JTextField();
         jTEmail = new javax.swing.JTextField();
-        jTTelefone = new javax.swing.JTextField();
-        jTNascimento = new javax.swing.JTextField();
         jBCadastrar = new javax.swing.JButton();
+        jFTelefone = new javax.swing.JFormattedTextField();
+        jFDataNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +66,23 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jFTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTelefoneActionPerformed(evt);
+            }
+        });
+
+        try {
+            jFDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,10 +98,10 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTTelefone)
-                            .addComponent(jTNascimento)))
+                            .addComponent(jFTelefone)
+                            .addComponent(jFDataNascimento)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -120,14 +137,14 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(jFDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(jBCadastrar)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,13 +155,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTNomeActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
-        Aluno a = new Aluno(jTNome.getText(),jTEmail.getText(), jTTelefone.getText(), jTNascimento.getText());
+        Aluno a = new Aluno(jTNome.getText(),jTEmail.getText(), jFTelefone.getText(), jFDataNascimento.getText());
          
          
        Resultado r = new Resultado(a);
        r.setVisible(true);
        r.setLocationRelativeTo(this);
     }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jFTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTelefoneActionPerformed
+        
+    }//GEN-LAST:event_jFTelefoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,14 +204,14 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrar;
+    private javax.swing.JFormattedTextField jFDataNascimento;
+    private javax.swing.JFormattedTextField jFTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTEmail;
-    private javax.swing.JTextField jTNascimento;
     private javax.swing.JTextField jTNome;
-    private javax.swing.JTextField jTTelefone;
     // End of variables declaration//GEN-END:variables
 }
